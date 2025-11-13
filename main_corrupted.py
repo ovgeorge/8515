@@ -35,8 +35,8 @@ def corrupt_training_set(
 ) -> datasets.MNIST:
     """Relabel a fraction of each class with images pulled from other classes."""
 
-    if fraction < 0 or fraction > 0.5:
-        raise ValueError("fraction must be in [0, 0.5] for a meaningful corruption sweep.")
+    if fraction < 0 or fraction > 0.9:
+        raise ValueError("fraction must be in [0, 0.9] for a meaningful corruption sweep.")
     if fraction == 0:
         return dataset
 

@@ -24,12 +24,12 @@ def parse_args() -> argparse.Namespace:
         type=float,
         nargs="+",
         default=None,
-        help="Explicit list of corruption fractions (each between 0 and 0.5).",
+        help="Explicit list of corruption fractions (each between 0 and 0.9).",
     )
     parser.add_argument(
         "--max-frac",
         type=float,
-        default=0.5,
+        default=0.9,
         help="Largest corruption fraction to try when --fractions is not provided.",
     )
     parser.add_argument(
@@ -55,8 +55,8 @@ def parse_args() -> argparse.Namespace:
 def validate_fractions(fractions: Iterable[float]) -> List[float]:
     result = []
     for frac in fractions:
-        if not (0.0 <= frac <= 0.5):
-            raise ValueError(f"Fraction {frac} is outside the supported [0, 0.5] range.")
+        if not (0.0 <= frac <= 0.9):
+            raise ValueError(f"Fraction {frac} is outside the supported [0, 0.9] range.")
         result.append(round(frac, 4))
     return result
 
